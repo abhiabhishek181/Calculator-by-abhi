@@ -1,0 +1,120 @@
+:root {
+  --paper: #EDE7DD;
+  --ink: #1F2421;
+  --tape-red: #B4432D;
+  --tape-red-dark: #8F3423;
+  --key-face: #F7F3EB;
+  --key-shadow: #C9BFAE;
+  --mono: 'Courier New', Courier, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  font-family: var(--mono);
+  padding: 24px;
+}
+
+.machine {
+  width: 320px;
+  background: var(--ink);
+  border-radius: 6px 6px 28px 28px;
+  padding: 22px 18px 26px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--paper);
+  padding: 0 4px 14px;
+  letter-spacing: 0.02em;
+}
+
+.brand .model { font-size: 12px; opacity: 0.55; }
+.brand .name { font-size: 13px; font-weight: bold; }
+
+.tape {
+  background: linear-gradient(180deg, var(--tape-red), var(--tape-red-dark));
+  border-radius: 4px;
+  padding: 18px 16px 14px;
+  margin-bottom: 16px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.op-trail {
+  min-height: 16px;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.readout {
+  color: var(--paper);
+  font-size: 40px;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.1;
+  min-height: 46px;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  font-family: var(--mono);
+  font-size: 18px;
+  padding: 16px 0;
+  border: none;
+  border-radius: 4px;
+  background: var(--key-face);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--key-shadow);
+  cursor: pointer;
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--key-shadow);
+}
+
+button.op {
+  background: var(--tape-red);
+  color: var(--paper);
+  box-shadow: 0 3px 0 var(--tape-red-dark);
+}
+
+button.op:active { box-shadow: 0 0 0 var(--tape-red-dark); }
+
+button.wide { grid-column: span 2; }
+
+button.clear {
+  background: transparent;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+button.clear:active { transform: translateY(2px); }
+
+button.equals {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+}
